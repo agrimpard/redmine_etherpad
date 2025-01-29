@@ -4,7 +4,7 @@ This redmine plugin adds a macro in your redmine wikis, which allows the embeddi
 
 h2. Fork Aurélien
 
-Le fork permet de rendre ce plugin compatible avec Redmine 5.x et modifie son fonctionnement pour l'univeristé ...
+Le fork permet de rendre ce plugin compatible avec Redmine 5.x et modifie son fonctionnement pour l'université ...
 
 h2. Macro: etherpad()
 
