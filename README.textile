@@ -2,6 +2,10 @@ h1. What does it do?
 
 This redmine plugin adds a macro in your redmine wikis, which allows the embedding of etherpads.  It provides the same result as "this hack":http://rschulte.com/blog/2011/etherpad-and-redmine-hack-how-we-are-embedding-collaborative-documents-redmine, but more easily, and without the unsafety of allowing arbitrary html.
 
+h2. Fork Aurélien
+
+Le fork permet de rendre ce plugin compatible avec Redmine 5.x et modifie son fonctionnement pour l'univeristé ...
+
 h2. Macro: etherpad()
 
 To use, just add @{{etherpad(nameOfPad)}}@ to the issue/wiki/page in which to embed a pad.
