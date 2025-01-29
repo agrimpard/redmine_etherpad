@@ -36,8 +36,7 @@ Redmine::Plugin.register :redmine_etherpad do
         'showLineNumbers' => conf.fetch('showLineNumbers', false),
         'useMonospaceFont' => conf.fetch('useMonospaceFont', false),
         'noColors' => conf.fetch('noColors', false),
-        'width' => conf.fetch('width', '640px'),
-        'height' => conf.fetch('height', '480px'),
+		'style' => conf.fetch('style', 'width:640px;height:480px')
       }
 
       # Override defaults with given arguments.
@@ -58,14 +57,13 @@ Redmine::Plugin.register :redmine_etherpad do
         return "TODO: embed read-only."
       end
 
-      width = controls.delete('width')
-      height = controls.delete('height')
+      style = controls.delete('style')
 
       # add project name before padname and hexencode the result
       projectname = @project.identifier
       realname = Digest::SHA1.hexdigest(projectname + padname)
       
-      return CGI::unescapeHTML("<iframe src='#{conf['host']}/p/#{URI.encode_www_form_component(realname)}?#{hash_to_querystring(controls)}' width='#{width}' height='#{height}'></iframe>").html_safe
+      return CGI::unescapeHTML("<iframe src='#{conf['host']}/p/#{URI.encode_www_form_component(realname)}?#{hash_to_querystring(controls)}' style='#{style}'></iframe>").html_safe
     end
   end
 end
