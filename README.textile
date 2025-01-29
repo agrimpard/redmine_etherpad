@@ -14,8 +14,7 @@ Requires at least one argument, the name of the etherpad to embed.
 
 Other arguments should be listed in "key=val" format, and include:
 
-* @width@: the width of the iframe (e.g. "640px", "100%"), default=640px.
-* @height@: the height of the iframe (e.g. ("800px"), default=480px.
+* @style@: the style of the iframe (e.g. "width:100%;height:80vh", "width:500px;height:600px"), default="width:640px;height:480px".
 * @showControls@: true/false (default true)
 * @showChat@: true/false (default true)
 * @showLineNumbers@: true/false (default false)
