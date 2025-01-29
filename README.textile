@@ -59,6 +59,7 @@ You can also list any of the embed arguments to replace defaults, for example:
     host: https://etherpad.example.com
     showLineNumbers: true
     useMonospaceFont: true
+    style: "width:100%;height:80vh"
 </code></pre>
 
 
