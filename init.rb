@@ -9,17 +9,17 @@ require 'uri'
 def hash_to_querystring(hash)
   hash.keys.inject('') do |query_string, key|
     query_string << '&' unless key == hash.keys.first
-    query_string << "#{URI.encode(key.to_s)}=#{URI.encode(hash[key].to_s)}"
+    query_string << "#{URI.encode_www_form_component(key.to_s)}=#{URI.encode_www_form_component(hash[key].to_s)}"
   end
 end
 
 Redmine::Plugin.register :redmine_etherpad do
   name 'Redmine Etherpad plugin'
-  author 'Charlie DeTar'
+  author 'Aurélien Grimpard'
   description 'Embed etherpad-lite pads in redmine wikis.'
-  version '0.0.2'
-  url 'https://github.com/yourcelf/redmine_etherpad'
-  author_url 'https://github.com/yourcelf'
+  version '0.0.3'
+  url 'https://github.com/agrimpard/redmine_etherpad'
+  author_url 'https://github.com/agrimpard'
 
   Redmine::WikiFormatting::Macros.register do
     desc "Embed etherpad"
@@ -60,8 +60,12 @@ Redmine::Plugin.register :redmine_etherpad do
 
       width = controls.delete('width')
       height = controls.delete('height')
+
+      # add project name before padname and hexencode the result
+      projectname = @project.identifier
+      realname = Digest::SHA1.hexdigest(projectname + padname)
       
-      return CGI::unescapeHTML("<iframe src='#{conf['host']}/p/#{URI.encode(padname)}?#{hash_to_querystring(controls)}' width='#{width}' height='#{height}'></iframe>").html_safe
+      return CGI::unescapeHTML("<iframe src='#{conf['host']}/p/#{URI.encode_www_form_component(realname)}?#{hash_to_querystring(controls)}' width='#{width}' height='#{height}'></iframe>").html_safe
     end
   end
 end
